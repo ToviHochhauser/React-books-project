@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import ApperBar from './features/navigation/ApperBar';
+import AllBooks from "./features/book/AllBooks";
+import { Routes, Route } from 'react-router-dom';
+import LogInOrSignUp from './features/user/LogInOrSignUp';
+import { Grid } from '@mui/material';
+import ShoppingCartContainer from "./features/order/ShopingCart"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='all'> 
+      <ApperBar />
+           <Routes>
+        <Route path="allBooks" element={<AllBooks />} />
+        <Route path="shopingCart" element={<ShoppingCartContainer />} />
+        <Route path="register" element={
+          <Grid container direction="column" alignItems="center" justifyContent="center" 
+          style={{minHeight:"50vh"}}>
+            <Grid item>
+              <LogInOrSignUp />
+            </Grid>
+          </Grid>
+        } />
+      </Routes>
     </div>
   );
 }
